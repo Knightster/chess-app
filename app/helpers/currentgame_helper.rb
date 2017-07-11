@@ -1,0 +1,2 @@
+module CurrentgameHelper
+end
