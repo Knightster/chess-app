@@ -1,0 +1,2 @@
+module NewgameHelper
+end
