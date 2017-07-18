@@ -9,6 +9,10 @@ class GamesController < ApplicationController
   end
 
   def create
+
+  end
+
+  def show
     
   end
 
