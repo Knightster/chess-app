@@ -6,7 +6,6 @@ table {
   border-spacing: 0;
   width: auto;
   border: 2px solid black;
-
 }
 
 td {
@@ -17,8 +16,6 @@ td {
   font-size: 10px;
   padding: 10px;
   background-color: black;
-
-
 }
 
 h1 {
@@ -29,4 +26,17 @@ h1 {
 tr:nth-child(odd) td:nth-child(even),
 tr:nth-child(even) td:nth-child(odd) {
   background: white;
+}
+
+.navbar {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 200;
+  box-shadow: 0px 1px 3px #2a2a2a;
+  background: image_url('ep_naturalblack.png');
+}
+
+.navbar-inverse a.navbar-brand {
+  font-family: Chalkduster, fantasy;
+  font-weight: 100;
+  color: #428bca;
 }
