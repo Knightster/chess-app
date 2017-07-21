@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6, .navbar {
 }
 
 .frosty {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(128, 128, 128, 0.2);
   color: white;
 }
 
@@ -80,4 +80,45 @@ h1, h2, h3, h4, h5, h6, .navbar {
 body {
   background: image_url('ep_naturalwhite.png');
   font-family: Andale Mono, monospace;
+}
+
+.feature {
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.booyah-box {
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 20px;
+}
+
+.booyah-box h2, .booyah-box h1 {
+  margin: 10px;
+}
+
+.overlay {
+  background: white;
+}
+
+h1.header-title {
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif; 
+  font-size: 100px; 
+}
+
+h1.paragraph-title {
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif; 
+  font-size: 50px; 
+}
+
+h2.paragraph-title {
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif; 
+  font-size: 40px; 
 }
