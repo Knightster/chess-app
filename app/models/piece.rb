@@ -15,13 +15,24 @@ class Piece < ApplicationRecord
     end
   end
 
-  def diagonal_move
+  def diagonal_dir
     if horizontal_dir == vertical_dir
       return true
+    end
+  end
+
+  def is_blocked?
+    obstructed_squares = is_occupied?(x, y)
+    return false if obstructed_squares.empty?
+    obstructed_squares.each do |square|
+      return true if game.is_occupied?(x,y)
+    end
+    false
   end
 
 end
 
-def filled_square(x, y)
+#doesn't this have to be in the game controller?
+def is_occupied?(x, y)
     pieces.where(x_dest: x, y_dest: y).last
 end
