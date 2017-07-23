@@ -2,23 +2,28 @@ class Piece < ApplicationRecord
 
 
   #check if horizonal move
-  def horizontal_dir(x_start, x_end, y_start, y_end)
-    if x_start != x_end && y_start == y_end
-      return(x_end - x_start).abs
-    end
+  def horizontal_move?(x_position, x, y_position, y)
+     x_position != x_end && y_position == y
+  end
+
+  #check for horizontal distance moved
+  def delta_x(x_position, x)
+    (x - x_position).abs 
   end
 
   #check if vertical move
-  def vertical_dir(x_start, x_end, y_start, y_end)
-    if x_start == x_end && y_start != y_end
-      return(y_end - y_start).abs
-    end
+  def vertical_move?(x_position, x, y_position, y)
+    x_position == x && y_position != y
   end
 
-  def diagonal_dir
-    if horizontal_dir == vertical_dir
-      return true
-    end
+  #check for vertical distance moved
+  def delta_y(y_position, y)
+    (y - y_position).abs
+  end
+
+  #check if diagonal move
+  def diagonal_move?
+    delta_x == delta_y
   end
 
   def is_blocked?
@@ -32,7 +37,4 @@ class Piece < ApplicationRecord
 
 end
 
-#doesn't this have to be in the game controller?
-def is_occupied?(x, y)
-    pieces.where(x_dest: x, y_dest: y).last
-end
+
