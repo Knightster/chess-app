@@ -38,10 +38,10 @@ class Piece < ApplicationRecord
     piece_path = []
    
     #determine which squares to check
-    steps.times(piece_path.push[x += x_direction, y =+ y_direction])
+    steps.times(piece_path.push[x += x_direction, y += y_direction])
 
     piece_path.each do |square|
-      return true if game.is_occupied?(x,y)
+      return true if game.is_occupied?(square)
     end
     false
   end
