@@ -9,10 +9,11 @@ class GamesController < ApplicationController
 
   end
 
-  def create
+   def create
     @game = Game.create(game_params)
     @game.white_player = current_user
-
+    @game.status = 'Open'
+    @game.update_attributes
   end
 
   def show
