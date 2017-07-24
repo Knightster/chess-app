@@ -1,16 +1,24 @@
 class GamesController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :create]
 
-  def index; end
+  def index
 
-  def new; end
+  end
+
+  def new
+
+  end
 
   def create
     @game = Game.create(game_params)
     @game.white_player = current_user
+    @game.status = 'Open'
+    @game.update_attributes
   end
 
-  def show; end
+  def show
+
+  end
 
   private
 
