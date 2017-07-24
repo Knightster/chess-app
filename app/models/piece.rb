@@ -3,7 +3,7 @@ class Piece < ApplicationRecord
 
   #check if horizonal move
   def horizontal_move?(x_position, x, y_position, y)
-     x_position != x_end && y_position == y
+     x_position != x && y_position == y
   end
 
   #check for horizontal distance moved
@@ -26,15 +26,25 @@ class Piece < ApplicationRecord
     delta_x == delta_y
   end
 
-  def is_blocked?
-    obstructed_squares = is_occupied?(x, y)
-    return false if obstructed_squares.empty?
-    obstructed_squares.each do |square|
+  def is_blocked?(x, y)
+    #determine the direction the piece is traveling to
+    x_direction = x <=> x_position
+    y_direction = y <=> y_position
+
+    #how many times will the check occur
+    steps = delta_x > delta_y ? delta_x : delta_y
+
+    #save the coordinates of the path into an array
+    piece_path = []
+   
+    #determine which squares to check
+    steps.times(piece_path.push[x += x_direction, y =+ y_direction])
+
+    piece_path.each do |square|
       return true if game.is_occupied?(x,y)
     end
     false
   end
 
-end
 
 
