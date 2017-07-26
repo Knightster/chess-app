@@ -4,7 +4,7 @@ class Game < ApplicationRecord
   has_many :pieces
 
 
-  def is_occupied?(x, y)
+  def square_occupied?(x, y)
     pieces.where(x_position: x, y_position: y).exists?
   end
 
