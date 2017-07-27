@@ -1,13 +1,8 @@
-inherit_from: .rubocop_todo.yml
 AllCops:
   Exclude:
-    - 'config/**/*'
-    - 'db/**/*'
+    - 'db/schema.rb'
     - 'vendor/**/*'
-    - 'spec/spec_helper.rb'
-    - 'spec/rails_helper.rb'
     - 'tmp/**/*'
-    - 'Gemfile'
 
 Documentation:
   Enabled: false
@@ -29,3 +24,6 @@ Metrics/BlockLength:
 
 Metrics/ClassLength:
   Enabled: false
+
+Metrics/MethodLength:
+  Max: 15
