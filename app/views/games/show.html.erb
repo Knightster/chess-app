@@ -3,7 +3,14 @@
   <% 8.times.each do |row| %>
   <tr>
     <% 8.times.each do |col| %>
-    <td> <%= "#{row}.#{col}" %> </td>
+    <td>
+      <!-- <%= "#{row}.#{col}" %> -->
+      <% @game.pieces.each do |piece| %>
+        <% if piece.x_position == col && piece.y_position == row %>
+          <p> <%= raw piece.image %> </p>
+        <% end %>
+      <% end %>
+    </td>
     <% end %>
   </tr>
 <% end %>
