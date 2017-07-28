@@ -4,6 +4,8 @@ class Game < ApplicationRecord
   # belongs_to :black_player, class_name: "Player"
   has_many :pieces
 
+  # rubocop:disable MethodLength
+  # rubocop:disable Metrics/AbcSize
   def populate_game
     # white pieces
     Rook.create(game_id: id, color: 'white', x_position: 0, y_position: 7)
@@ -33,4 +35,6 @@ class Game < ApplicationRecord
       Pawn.create(game_id: id, color: 'black', x_position: x_column, y_position: 1)
     end
   end
+  # rubocop:enable MethodLength
+  # rubocop:enable Metrics/AbcSize
 end
