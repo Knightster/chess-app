@@ -24,7 +24,7 @@ class Piece < ApplicationRecord
     delta_x == delta_y
   end
 
-  def is_blocked?(x, y)
+  def blocked?(x, y)
     # determine the direction the piece is traveling to
     x_direction = x <=> x_position
     y_direction = y <=> y_position
