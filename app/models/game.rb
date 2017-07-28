@@ -6,4 +6,8 @@ class Game < ApplicationRecord
   def self.needs_second_player
     Game.where(status: 'Open')
   end
+
+  def square_occupied?(x, y)
+    pieces.where(x_position: x, y_position: y).exists?
+  end
 end
