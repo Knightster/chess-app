@@ -35,6 +35,11 @@ class Game < ApplicationRecord
       Pawn.create(game_id: id, color: 'black', x_position: x_column, y_position: 1)
     end
   end
+
   # rubocop:enable MethodLength
   # rubocop:enable Metrics/AbcSize
+
+  def square_occupied?(x, y)
+    pieces.where(x_position: x, y_position: y).exists?
+  end
 end
