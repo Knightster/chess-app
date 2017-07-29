@@ -1,4 +1,5 @@
 class Piece < ApplicationRecord
+  belongs_to :game
   # check if horizonal move
   def horizontal_move?(x_position, x, y_position, y)
     x_position != x && y_position == y
