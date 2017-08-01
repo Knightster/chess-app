@@ -50,9 +50,9 @@ class Piece < ApplicationRecord
   def move_to!(x, y) # move and capture
     game
     return false unless valid_move?(x, y)
-      if square_occupied?(x, y)
-        target_piece = @game.piece.find_by(x_position: x, y_position: y)
-        target_piece.update_attributes(x_position: nil, y_position: nil, captured: true)
-      end
+    if square_occupied?(x, y)
+      target_piece = @game.piece.find_by(x_position: x, y_position: y)
+      target_piece.update_attributes(x_position: nil, y_position: nil, captured: true)
     end
+  end
 end
