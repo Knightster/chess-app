@@ -42,8 +42,17 @@ class Piece < ApplicationRecord
     end
 
     piece_path.each do |square|
-      return true if game.is_occupied?(square[0], square[1])
+      return true if game.square_occupied?(square[0], square[1])
     end
     false
+  end
+
+  def move_to!(x, y)
+    return false unless valid_move?(x, y)
+    if square_occupied?(x, y)
+      target_piece = game.piece.find_by(x_position: x, y_position: y)
+      target_piece.update_attributes(x_position: nil, y_position: nil, captured: true)
+    end
+    update_attributes(x_position: x, y_position: y)
   end
 end
