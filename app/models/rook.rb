@@ -15,6 +15,11 @@ class Rook < Piece
       return true
     end
 
+    # The rook can move vertically      
+    if((delta_x(x_position, x) == 0 && delta_y(y_position, y) > 0))
+      return true
+    end
+
     # The rook can't move horizontally and vertically
     return false
   end
