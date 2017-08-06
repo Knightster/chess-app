@@ -6,4 +6,7 @@ class Bishop < Piece
       '&#9821;'
     end
   end
+
+  def valid_move?(x, y)
+  end
 end
