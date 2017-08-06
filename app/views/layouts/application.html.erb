@@ -2,8 +2,12 @@
 <html>
   <head>
     <title>Knightster</title>
-    <%= csrf_meta_tags %>
 
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="author" content="Co-authored by Abdullah Alam, Chastity Lawson, Emmilie Estabillo, Jacob Gillespie, Justin Bland, Zayn Rahman">
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,6 +17,8 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      <%= link_to image_tag("logo.png", alt: "Knightster Logo"), '/', class: 'navbar-brand hidden-xs-down hidden-sm-down hidden-md-down' %>
       <%= link_to 'Knightster', root_path, class: 'navbar-brand' %>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
