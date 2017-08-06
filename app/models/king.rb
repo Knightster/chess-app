@@ -7,17 +7,11 @@ class King < Piece
     end
   end
 
-  def valid_move?(x,y)
-    if horizontal_move?(x_position, x, y_position, y)
-      if delta_x(x_position, x) <= 1
-        !blocked?(x,y)
-      end
-    elsif vertical_move?(x_position, x, y_position, y)
-      if delta_y(y_position, y) <= 1
-        !blocked?(x,y)
-      end
-    elsif diagonal_move?
-      !blocked?(x,y)
-    end  
+  def valid_move?(x, y)
+    #guard clause style
+    return false if blocked?(x,y) #checks if piece is blocking at destination coordinate
+    return false if delta_x(x_position, x) > 1
+    return false if delta_y(y_position, y) > 1
+    return true
   end
 end
