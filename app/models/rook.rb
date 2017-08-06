@@ -6,4 +6,7 @@ class Rook < Piece
       '&#9820;'
     end
   end
+
+  def valid_move?(x, y)
+  end
 end
