@@ -8,16 +8,12 @@ class Bishop < Piece
   end
 
   def valid_move?(x, y)
-    if blocked?(x, y)
-      return false
-    end
+    return false if blocked?(x, y)
 
     # The bishop can move diagonally
-    if delta_x(x_position, x) == delta_y(y_position, y)
-      return true
-    end
+    return true if delta_x(x_position, x) == delta_y(y_position, y)
 
     # The bishop can't move diagonally
-    return false
+    false
   end
 end
