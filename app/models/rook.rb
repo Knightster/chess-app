@@ -8,7 +8,7 @@ class Rook < Piece
   end
 
   def valid_move?(x, y)
-    return false unless
+    return false if blocked?(x,y)
 
     # The rook can move horizontally      
     if((delta_x(x_position, x) > 0 && delta_y(y_position, y) == 0))
