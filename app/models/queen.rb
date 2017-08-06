@@ -6,4 +6,7 @@ class Queen < Piece
       '&#9819;'
     end
   end
+
+  def valid_move?(x, y)
+  end
 end
