@@ -6,7 +6,7 @@ class Piece < ApplicationRecord
   end
 
   # check for horizontal distance moved
-  def delta_x(x)
+  def delta_x(x_position, x)
     (x - x_position).abs
   end
 
@@ -16,13 +16,13 @@ class Piece < ApplicationRecord
   end
 
   # check for vertical distance moved
-  def delta_y(y)
+  def delta_y(y_position, y)
     (y - y_position).abs
   end
 
   # check if diagonal move
-  def diagonal_move?(x,y)
-    delta_x(x) == delta_y(y)
+  def diagonal_move?
+    delta_x == delta_y
   end
 
   def blocked?(x, y)
@@ -31,7 +31,7 @@ class Piece < ApplicationRecord
     y_direction = y <=> y_position
 
     # how many times will the check occur
-    steps = delta_x(x) > delta_y(y) ? delta_x(x) : delta_y(y)
+    steps = delta_x > delta_y ? delta_x : delta_y
 
     # save the coordinates of the path into an array
     piece_path = []
