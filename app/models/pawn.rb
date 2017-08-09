@@ -8,37 +8,41 @@ class Pawn < Piece
   end
 
   def valid_move?(x, y)
-    dx = delta_x(x_position, x)
-    dy = delta_y(y_position, y)
-
     return false if blocked?(x, y)
+    return false if backwards_move?(y)
+    return true if capture_move?(x, y)
+    return false if horizontal_move?(x, y)
 
-    # pawn can't move horizontally
-    return false if dx != 0 && dy.zero?
+    right_dist?(y) || en_passant?(y)
+  end
 
-    # pawn moves vertically 1 space
-    return true if dx.zero? && dy == 1
-    return false if color == 'white' && y_position < y
-    return false if color == 'black' && y_position > y
-    false
+  def backwards_move?(y)
+    color == 'white' ? y_position > y : y_position < y
   end
 
   def capture_move?(x, y)
     x_diff = (x_position - x).abs
     y_diff = (y_position - y).abs
     captured_piece = square_occupied?(x, y)
+
     return true if x_diff == 1 && y_diff == 1
-    return false if captured_piece.blank?
-    # return false if captured_piece.color ==
+    return false if x_diff > 1 && y_diff > 1
+  end
+
+  def horizontal_move?(x, y)
+    x_diff = (x_position - x).abs
+    y_diff = (y_position - y).abs
+    x_diff != 0 && y_diff.zero?
+  end
+
+  def right_dist?(y)
+    (y - y_position).abs == 1
   end
 
   def first_move?(y)
     (color == 'white' && y_position == 6) || (color == 'black' && y_position == 1)
     y_diff = (y_position - y).abs
     return true if y_diff == 1 || y_diff == 2
+    false
   end
-
-  # def backwards_move?(y)
-  #   color == 'white' ? y_position < y : y_position > y
-  # end
 end
