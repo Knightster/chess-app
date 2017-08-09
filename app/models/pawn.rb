@@ -27,7 +27,7 @@ class Pawn < Piece
 
     return true if x_diff == 1 && y_diff == 1
     return false if x_diff > 1 && y_diff > 1
-    return false if square_occupied?(x, y) == nil
+    return false if square_occupied?(x, y).nil?
   end
 
   def horizontal_move?(x)
@@ -40,7 +40,7 @@ class Pawn < Piece
     (y - y_position).abs == 1
   end
 
-  def first_move?(y)
+  def first_move?
     (y_position == 1 && color == 'black') || (y_position == 6 && color == 'white')
     # (color == 'white' && y_position == 6) || (color == 'black' && y_position == 1)
     # y_diff = (y_position - y).abs
