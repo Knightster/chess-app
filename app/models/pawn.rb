@@ -45,3 +45,4 @@ class Pawn < Piece
       (y - y_position).abs == 2 || (y - y_position).abs == 1
   end
 end
+end
