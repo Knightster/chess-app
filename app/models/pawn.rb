@@ -43,6 +43,5 @@ class Pawn < Piece
   def first_move?
     return unless (y_position == 1 && color == 'black') || (y_position == 6 && color == 'white')
       (y - y_position).abs == 2 || (y - y_position).abs == 1
-    end
   end
 end
