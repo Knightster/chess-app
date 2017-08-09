@@ -38,7 +38,7 @@ class Pawn < Piece
     return true if y_diff == 1 || y_diff == 2
   end
 
-  def backwards_move?(y)
-    color == 'white' ? y_position < y : y_position > y
-  end
+  # def backwards_move?(y)
+  #   color == 'white' ? y_position < y : y_position > y
+  # end
 end
