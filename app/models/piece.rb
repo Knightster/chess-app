@@ -55,4 +55,5 @@ class Piece < ApplicationRecord
     end
     update_attributes(x_position: x, y_position: y)
   end
+  
 end

@@ -20,13 +20,13 @@ class Pawn < Piece
     return true if dx.zero? && dy == 1
     return true if first_move?(y)
     return false if backwards_move?(y)
+    false
   end
 
   def capture_move?(x, y)
     x_diff = (x_position - x).abs
     y_diff = (y_position - y).abs
     captured_piece = square_occupied?(x, y)
-    
     return true if x_diff == 1 && y_diff == 1
     return false if captured_piece.blank?
     # return false if captured_piece.color ==
