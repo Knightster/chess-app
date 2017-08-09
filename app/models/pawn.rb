@@ -18,7 +18,8 @@ class Pawn < Piece
 
     # pawn moves vertically 1 space
     return true if dx.zero? && dy == 1
-    return false if backwards_move?(y)
+    return false if color == 'white' && y_position < y
+    return false if color == 'black' && y_position > y
     false
   end
 
