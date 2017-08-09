@@ -19,10 +19,10 @@ class Pawn < Piece
     #pawn moves vertically 1 space
     return true if dx == 0 && dy ==1
 
-
-    return true if capture_move?(x,y)
     return true if first_move?(y)
+    
     return false if backwards_move?(y)
+
 
   end
 
@@ -30,8 +30,10 @@ class Pawn < Piece
   def capture_move?(x,y)
     x_diff = (x_position - x).abs  dx
     y_diff = (y_position - y).abs  dy
-    return true if x_diff == 1 && y_diff == 1
-    return false if x_diff > 1 && y_diff >1
+
+    if square_occupied?(x,y)
+      return true if x_diff == 1 && y_diff == 1
+      return false if x_diff > 1 && y_diff >1
   end
 
   def first_move?(y)
