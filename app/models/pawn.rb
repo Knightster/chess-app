@@ -23,17 +23,17 @@ class Pawn < Piece
     
     return false if backwards_move?(y)
 
-
   end
 
 
   def capture_move?(x,y)
-    x_diff = (x_position - x).abs  dx
-    y_diff = (y_position - y).abs  dy
+    x_diff = (x_position - x).abs
+    y_diff = (y_position - y).abs
 
     if square_occupied?(x,y)
       return true if x_diff == 1 && y_diff == 1
       return false if x_diff > 1 && y_diff >1
+    end
   end
 
   def first_move?(y)
