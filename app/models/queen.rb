@@ -20,6 +20,7 @@ class Queen < Piece
     # The queen can move vertically
     return true if dx.zero? && dy > 0
 
+    # The queen can't move horizontally, vertically and diagonally
     false
   end
 end
