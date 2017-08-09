@@ -18,7 +18,6 @@ class Pawn < Piece
 
     # pawn moves vertically 1 space
     return true if dx.zero? && dy == 1
-    return true if first_move?(y)
     return false if backwards_move?(y)
     false
   end
