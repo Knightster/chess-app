@@ -8,15 +8,26 @@ class Queen < Piece
   end
 
   def valid_move?(x, y)
-    return false if blocked?(x, y)
+    if blocked?(x, y)
+      return false
+    end
 
     dx = delta_x(x_position, x)
     dy = delta_y(y_position, y)
 
-    return true if dx == dy
-    return true if dx > 0 && dy.zero?
-    return true if dx.zero? && dy > 0
+    #The queen can move diagonally
+    if dx == dy
+      return true
+    end
+    #The queen can move horizonally
+    if dx > 0 && dy.zero?
+      return true
+    end
+    #The queen can move vertically
+    if dx.zero? && dy > 0
+      return true
+    end
 
-    false
+    return false
   end
 end
