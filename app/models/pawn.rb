@@ -37,14 +37,11 @@ class Pawn < Piece
   end
 
   def right_dist?(y)
-    if first_move?
-      (y - y_position).abs == 2
-    else
-      (y - y_position).abs == 1
-    end
+    (y - y_position).abs == 1
   end
 
   def first_move?
-    (y_position == 1 && color == 'black') || (y_position == 6 && color == 'white')
+    if (y_position == 1 && color == 'black') || (y_position == 6 && color == 'white')
+      (y - y_position).abs == 2 || (y - y_position).abs == 1
   end
 end
