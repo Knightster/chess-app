@@ -15,15 +15,15 @@ class Queen < Piece
     dx = delta_x(x_position, x)
     dy = delta_y(y_position, y)
 
-    #The queen can move diagonally
+    # The queen can move diagonally
     if dx == dy
       return true
     end
-    #The queen can move horizonally
+    # The queen can move horizonally
     if dx > 0 && dy.zero?
       return true
     end
-    #The queen can move vertically
+    # The queen can move vertically
     if dx.zero? && dy > 0
       return true
     end
