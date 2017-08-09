@@ -11,7 +11,7 @@ class Pawn < Piece
     return false if blocked?(x, y)
     return false if backwards_move?(y)
     return true if capture_move?(x, y)
-    return false if horizontal_move?(x, y)
+    return false if horizontal_move?(x)
 
     right_dist?(y) || en_passant?(y)
   end
@@ -27,12 +27,10 @@ class Pawn < Piece
 
     return true if x_diff == 1 && y_diff == 1
     return false if x_diff > 1 && y_diff > 1
+    return false if captured_pieces = nil
   end
 
-  def horizontal_move?(x, y)
-    x_diff = (x_position - x).abs
-    y_diff = (y_position - y).abs
-    x_diff != 0 && y_diff.zero?
+  def horizontal_move?(x)
   end
 
   def right_dist?(y)
@@ -43,6 +41,7 @@ class Pawn < Piece
     (color == 'white' && y_position == 6) || (color == 'black' && y_position == 1)
     y_diff = (y_position - y).abs
     return true if y_diff == 1 || y_diff == 2
-    false
   end
+
+  
 end
