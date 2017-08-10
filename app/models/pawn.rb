@@ -30,6 +30,7 @@ class Pawn < Piece
     return false if captured_piece.blank?
     if captured_piece.state == 'en_passant'
       return x_diff == 1 && y_diff.zero? 
+    end
     false
   end
 
