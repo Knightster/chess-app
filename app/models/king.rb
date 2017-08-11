@@ -24,6 +24,7 @@ class King < Piece
     castling_kingside?(x, y) && castling_never_moved?
   end
 
+  # The king can attack to the castle on the kingside
   def castling_kingside?(x, y)
     x == 6 && y == y_position && castling_rook_kingside && castling_rook_kingside.castling_never_moved? && castling_rook_kingside.blocked?(4, y_position) == false
   end
