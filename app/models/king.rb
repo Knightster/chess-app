@@ -46,7 +46,7 @@ class King < Piece
 
   def move_to!(x, y)
     if move_castle?(x, y)
-      return castle!(x, y)
+      castle!(x, y)
     end
   end
 end
