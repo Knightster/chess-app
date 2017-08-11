@@ -29,4 +29,9 @@ class King < Piece
     x == 6 && y == y_position && castling_rook_kingside && castling_rook_kingside.castling_never_moved? && \
       castling_rook_kingside.blocked?(4, y_position) == false
   end
+
+  def castling_rook_kingside
+    can_castling_rook_kingside = game.pieces.where(x_position: 0, y_position: y_position, color: 'white' || 'black', type: 'Rook')
+    @castling_rook_kingside = can_castling_rook_kingside.first
+  end
 end
