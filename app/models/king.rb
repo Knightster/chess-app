@@ -23,4 +23,10 @@ class King < Piece
   def move_castle?(x, y)
     castling_kingside?(x, y) && castling_never_moved?
   end
+
+  def castling_kingside?(x, y)
+  end
+
+  def castling_rook_kingside
+  end
 end
