@@ -30,7 +30,7 @@ class King < Piece
       castling_rook_kingside.blocked?(4, y_position) == false
   end
 
-  # The rook to castle with king side 
+  # The rook to castle with king side
   def castling_rook_kingside
     can_castling_rook_kingside = game.pieces.where(x_position: 0, y_position: y_position, \
                                                    color: 'white' || 'black', type: 'Rook')
@@ -45,8 +45,6 @@ class King < Piece
   end
 
   def move_to!(x, y)
-    if move_castle?(x, y)
-      castle!(x, y)
-    end
+    castle!(x, y) if move_castle?(x, y)
   end
 end
