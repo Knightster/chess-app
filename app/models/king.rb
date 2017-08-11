@@ -36,4 +36,11 @@ class King < Piece
                                                    color: 'white' || 'black', type: 'Rook')
     @castling_rook_kingside = can_castling_rook_kingside.first
   end
+
+  def castle!(x, y)
+    if castling_kingside?(x, y)
+      castling_rook_kingside.update_attributes(x_position: 5, y_position: y_position)
+    end
+    update_attributes(x_position: x, y_position: y)
+  end
 end
