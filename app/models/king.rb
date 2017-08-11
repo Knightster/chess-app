@@ -14,16 +14,13 @@ class King < Piece
     return false if delta_y(y_position, y) > 1
 
     # The king can castle
-    if move_castle?(x, y)
-      return true
-    end
+    return true if move_castle?(x, y)
 
     true
   end
 
   # Support castling with the king
   def move_castle?(x, y)
-    (castling_kingside?(x, y) || castling_queenside?(x, y)) && castling_never_moved?
+    castling_kingside?(x, y) && castling_never_moved?
   end
-
 end
