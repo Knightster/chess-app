@@ -43,4 +43,10 @@ class King < Piece
     end
     update_attributes(x_position: x, y_position: y)
   end
+
+  def can_move_to!(x, y)
+    if move_castle?(x, y)
+      return castle!(x, y)
+    end
+  end
 end
