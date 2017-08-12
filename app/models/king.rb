@@ -38,6 +38,11 @@ class King < Piece
 
   # The rook to castle with king side
   def castling_rook_kingside
+    game.pieces.where(x_position: 7, y_position: y_position, color: color, type: 'Rook').first
+  end
+
+  # The rook to castle with queen side
+  def castling_rook_queenside
     game.pieces.where(x_position: 0, y_position: y_position, color: color, type: 'Rook').first
   end
 
