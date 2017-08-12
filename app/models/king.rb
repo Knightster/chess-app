@@ -21,7 +21,7 @@ class King < Piece
 
   # Support castling with the king
   def move_castle?(x, y)
-    castling_kingside?(x, y) && castling_never_moved?
+    (castling_kingside?(x, y) || castling_queenside?(x, y)) && castling_never_moved?
   end
 
   # The king can attack to the castle on the king side
