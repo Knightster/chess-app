@@ -32,9 +32,7 @@ class King < Piece
 
   # The rook to castle with king side
   def castling_rook_kingside
-    can_castling_rook_kingside = game.pieces.where(x_position: 0, y_position: y_position, \
-                                                   color: color, type: 'Rook')
-    @castling_rook_kingside = can_castling_rook_kingside.first
+    game.pieces.where(x_position: 0, y_position: y_position, color: color, type: 'Rook').first
   end
 
   def castle!(x, y)
