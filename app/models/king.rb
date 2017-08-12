@@ -50,6 +50,11 @@ class King < Piece
     if castling_kingside?(x, y)
       castling_rook_kingside.update_attributes(x_position: 5, y_position: y_position)
     end
+
+    if castling_queenside?(x, y)
+      castling_rook_queenside.update_attributes(x_position: 3, y_position: y_position)
+    end
+
     update_attributes(x_position: x, y_position: y)
   end
 
