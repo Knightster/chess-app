@@ -30,6 +30,12 @@ class King < Piece
       castling_rook_kingside.blocked?(4, y_position) == false
   end
 
+  # The king can attack to the castle on the queen side
+  def castling_queenside?(x, y)
+    x == 2 && y == y_position && castling_rook_queenside && castling_rook_queenside.castling_never_moved? && \
+      castling_rook_queenside.blocked?(4, y_position) == false
+  end
+
   # The rook to castle with king side
   def castling_rook_kingside
     game.pieces.where(x_position: 0, y_position: y_position, color: color, type: 'Rook').first
