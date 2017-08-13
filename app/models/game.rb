@@ -46,7 +46,7 @@ class Game < ApplicationRecord
   def in_check?(color)
     king = Piece.where(color: color, type: 'King').first
     opposing_pieces = Piece.where('color != ? and captured = ?', color, false)
-    puts opposing_pieces.size
+
     opposing_pieces.each do |piece|
       return true if piece.valid_move?(king.x_position, king.y_position)
     end
