@@ -47,6 +47,10 @@ class Piece < ApplicationRecord
     false
   end
 
+  def castling_never_moved?
+    updated_at == created_at
+  end
+
   def move_to!(x, y)
     return false unless valid_move?(x, y)
     if square_occupied?(x, y)
