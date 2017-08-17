@@ -42,4 +42,14 @@ class Game < ApplicationRecord
   def square_occupied?(x, y)
     pieces.where(x_position: x, y_position: y).exists?
   end
+
+  def in_check?(color)
+    king = Piece.where(color: color, type: 'King').first
+    opposing_pieces = Piece.where('color != ? and captured = ?', color, false)
+
+    opposing_pieces.each do |piece|
+      return true if piece.valid_move?(king.x_position, king.y_position)
+    end
+    false
+  end
 end
