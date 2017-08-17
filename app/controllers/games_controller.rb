@@ -16,6 +16,11 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def status
+    game = Game.find(params[:id])
+    render json: {"in_check" => game.in_check?}
+  end
+
   private
 
   def game_params
