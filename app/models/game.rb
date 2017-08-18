@@ -52,4 +52,10 @@ class Game < ApplicationRecord
     end
     false
   end
+
+  def player_color(player)
+    return 'white' if player.id == white_player_id
+    return 'black' if player.id == black_player_id
+    false
+  end
 end
