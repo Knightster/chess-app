@@ -1,7 +1,8 @@
 class GamesController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :create]
 
-  def index; end
+  def index 
+  end
 
   def new
     @game = Game.new
@@ -16,10 +17,6 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
-  def status
-    game = Game.find(params[:id])
-    render json: {"in_check" => game.in_check?}
-  end
 
   private
 

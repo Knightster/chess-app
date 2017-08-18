@@ -1,4 +1,24 @@
-<%= render partial: 'status', locals: {game: @game} %>
+<br />
+<br />
+<div class="col">
+  <div class="card">
+    <h1 class="card-title">Status</h1>
+  <br />
+
+    <% if @game.in_check?("white") %>
+      <div class="check-white alert-warning text-center" role="alert">
+        <strong>White is now in check</strong>
+      </div>
+      
+    <% elsif @game.in_check?("black") %>
+      <div class="check-black alert-warning text-center" role="alert">
+        <strong>Black is now in check</strong>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br />
+<br />
 
 <table>
 <!-- <table style="width: 100%"> -->
