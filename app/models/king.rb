@@ -14,7 +14,6 @@ class King < Piece
     return false if delta_y(y_position, y) > 1
 
     # Prevent from moving into check
-    # king = Piece.where(color: color, type: 'King').first
     opposing_pieces = Piece.where('color != ? and captured = ?', color, false)
 
     opposing_pieces.each do |piece|
