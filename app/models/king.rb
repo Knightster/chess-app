@@ -13,6 +13,13 @@ class King < Piece
     return false if delta_x(x_position, x) > 1
     return false if delta_y(y_position, y) > 1
 
+    # Prevent from moving into check
+    opposing_pieces = game.pieces.where('color != ? and captured = ?', color, false)
+
+    opposing_pieces.each do |piece|
+      return false if piece.valid_move?(x, y)
+    end
+
     # The king can castle
     return true if move_castle?(x, y)
 
