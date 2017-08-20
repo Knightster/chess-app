@@ -60,6 +60,7 @@ class Game < ApplicationRecord
     return false unless in_check?(color)
 
     # add method to determine if another piece can block check
+    return false if king.move_out_of_check?
 
     # add method to determine if piece causing check can be captured
 
