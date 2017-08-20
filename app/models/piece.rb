@@ -59,7 +59,7 @@ class Piece < ApplicationRecord
     end
     update_attributes(x_position: x, y_position: y)
   end
-  
+
   def coordinates_on_board?(x, y)
     return true if x >= 0 && x <= 7 && y >= 0 && y <= 7
     false

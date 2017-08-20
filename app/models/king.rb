@@ -18,7 +18,7 @@ class King < Piece
 
     true
   end
-  
+
   # check if king can move out of check
   def move_out_of_check?
     original_x = x_position
