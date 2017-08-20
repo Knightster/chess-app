@@ -7,7 +7,6 @@ RSpec.describe Rook, type: :model do
 
     expect(rook.valid_move?(4, 0)).to be true
     expect(rook.valid_move?(4, 6)).to be true
-    expect(rook.valid_move?(4, 5)).to be true
   end
 
   it 'can move vertically' do
