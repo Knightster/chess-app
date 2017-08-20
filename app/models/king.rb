@@ -18,6 +18,18 @@ class King < Piece
 
     true
   end
+  
+  # check if king can move out of check
+  def move_out_of_check?
+    original_x = x_position
+    original_y = y_position
+
+    ((original_x - 1)..(original_y + 1)).each do |x|
+      ((original_y - 1)..(original_y + 1)).each do |y|
+        return true if valid_move?(x, y) && coordinates_on_board?(x, y)
+      end
+    end
+  end
 
   # Support castling with the king
   def move_castle?(x, y)
