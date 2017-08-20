@@ -48,6 +48,7 @@ class Game < ApplicationRecord
     opposing_pieces = Piece.where('color != ? and captured = ?', color, false)
 
     opposing_pieces.each do |piece|
+      @piece_causing_check = piece
       return true if piece.valid_move?(king.x_position, king.y_position)
     end
     false
@@ -60,10 +61,17 @@ class Game < ApplicationRecord
     return false unless in_check?(color)
 
     # add method to determine if another piece can block check
-    return false if king.move_out_of_check?
 
     # add method to determine if piece causing check can be captured
+    x_check = @piece_causing_check.x_position
+    y_check = @piece_causing_check.y_position
+    defending_pieces = Piece.where('color = ? and captured = ?', color, false)
+
+    defending_pieces.each do |piece|
+      return false if piece.valid_move?(x_check, y_check)
+    end
 
     # add method to determine if king can move out of check
+    return false if king.move_out_of_check?
   end
 end
