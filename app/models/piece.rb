@@ -31,7 +31,9 @@ class Piece < ApplicationRecord
     y_direction = y <=> y_position
 
     # how many times will the check occur
-    steps = delta_x > delta_y ? delta_x : delta_y
+    dx = delta_x(x_position, x)
+    dy = delta_y(y_position, y)
+    steps = dx > dy ? dx : dy
 
     # save the coordinates of the path into an array
     piece_path = []

@@ -9,6 +9,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.create(game_params)
+    @game.populate_game
     redirect_to game_path(@game)
   end
 
