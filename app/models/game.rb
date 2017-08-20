@@ -52,4 +52,18 @@ class Game < ApplicationRecord
     end
     false
   end
+  
+  def checkmate?(color)
+    king = Piece.where(color: color, type: 'King').first
+    
+    # check to see if color is in check
+    return false unless in_check?(color)
+    
+    # add method to determine if another piece can block check
+    
+    # add method to determine if piece causing check can be captured
+    
+    # add method to determine if king can move out of check
+    
+  end
 end
