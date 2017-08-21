@@ -12,8 +12,16 @@ class Pawn < Piece
     return false if backwards_move?(y)
     return true if capture_move?(x, y)
     return false if horizontal_move?(x)
+    return true if standard_move?(x, y)
+    return true if first_move?(y)
 
     right_dist?(y)
+  end
+
+  def standard_move?(x, y)
+    x_diff = (x_position - x).abs
+    y_diff = (y_position - y).abs
+    x_diff.zero? && y_diff == 1
   end
 
   def backwards_move?(y)
@@ -23,7 +31,7 @@ class Pawn < Piece
   def capture_move?(x, y)
     x_diff = (x_position - x).abs
     y_diff = (y_position - y).abs
-    captured_piece = square_occupied?(x, y)
+    captured_piece = game.square_occupied?(x, y)
 
     return true if x_diff == 1 && y_diff == 1
     return false if x_diff > 1 && y_diff > 1
@@ -32,15 +40,14 @@ class Pawn < Piece
 
   def horizontal_move?(x)
     x_diff = (x_position - x).abs
-    y_diff = (y_position - y).abs
-    x_diff != 0 && y_diff.zero?
+    x_diff != 0
   end
 
   def right_dist?(y)
     (y - y_position).abs == 1
   end
 
-  def first_move?
+  def first_move?(y)
     return unless (y_position != 1 && color == 'black') || (y_position != 6 && color == 'white')
     (y - y_position).abs == 2 || (y - y_position).abs == 1
   end
