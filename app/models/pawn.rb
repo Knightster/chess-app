@@ -21,7 +21,7 @@ class Pawn < Piece
   def standard_move?(x, y)
     x_diff = (x_position - x).abs
     y_diff = (y_position - y).abs
-    x_diff == 0 && y_diff == 1
+    x_diff.zero? && y_diff == 1
   end
 
   def backwards_move?(y)
