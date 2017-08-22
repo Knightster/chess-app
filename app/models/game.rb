@@ -40,7 +40,11 @@ class Game < ApplicationRecord
   # rubocop:enable Metrics/AbcSize
 
   def square_occupied?(x, y)
-    pieces.where(x_position: x, y_position: y).exists?
+    !fetch_piece(x, y).nil?
+  end
+
+  def fetch_piece(x, y)
+    pieces.where(x_position: x, y_position: y).first
   end
 
   def in_check?(color)
