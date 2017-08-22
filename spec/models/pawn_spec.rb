@@ -13,7 +13,7 @@ RSpec.describe Pawn, type: :model do
     game = Game.create
     pawn = Pawn.create(game_id: game.id, x_position: 3, y_position: 3, color: 'white')
 
-    expect(pawn.valid_move?(3, 5)).to be false
+    expect(pawn.standard_move?(3, 5)).to be false
   end
 
   it 'can not move horizontally' do
