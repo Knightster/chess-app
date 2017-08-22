@@ -4,14 +4,7 @@ RSpec.describe Pawn, type: :model do
   it 'can move vertically and one or two squares on first move' do
     game = Game.create
     pawn = Pawn.create(game_id: game.id, x_position: 3, y_position: 1, color: 'black')
-    # y = 2
-    # x = 3
-    # expect(pawn.blocked?(3, 2)).to be false
-    # expect(pawn.backwards_move?(y)).to be false
-    # expect(pawn.capture_move?(x, y)).to be false
-    # expect(pawn.horizontal_move?(x)).to be false
-    # expect(pawn.standard_move?(x, y)).to be true
-    # expect(pawn.first_move?(y)).to be true
+
     expect(pawn.valid_move?(3, 2)).to be true
     expect(pawn.valid_move?(3, 3)).to be true
   end
