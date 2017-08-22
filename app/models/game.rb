@@ -57,4 +57,13 @@ class Game < ApplicationRecord
     return 'black' if player.id == black_player_id
     false
   end
+
+  # keep track of whose turn
+  def whose_turn(color)
+    if color
+      update_attributes(turn: white_player_id)
+    else
+      update_attributes(turn: black_player_id)
+    end
+  end
 end
