@@ -7,6 +7,7 @@ class PiecesController < ApplicationController
     else
       render text: 'invalid move'
     end
+    @piece.game.whose_turn(@piece.user) # switch players after turn
   end
 
   private

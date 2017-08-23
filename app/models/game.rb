@@ -60,7 +60,7 @@ class Game < ApplicationRecord
 
   # keep track of whose turn
   def whose_turn(color)
-    if color
+    if color == 'black'
       update_attributes(turn: white_player_id)
     else
       update_attributes(turn: black_player_id)
