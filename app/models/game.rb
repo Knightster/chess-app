@@ -60,10 +60,23 @@ class Game < ApplicationRecord
     return false unless in_check?(color)
 
     # add method to determine if another piece can block check
-    return false if king.move_out_of_check?
+    return !any_valid_moves?(color)
 
     # add method to determine if piece causing check can be captured
 
     # add method to determine if king can move out of check
+    return false if king.move_out_of_check?
+  end
+
+  def any_valid_moves?(color)
+    pieces = Pieces.where(color: color, captured: false)
+    pieces.each do |piece|
+      (0..7).each do |x|
+        (0..7).each do |y|
+          return true if piece.valid_move?(x,y) && !piece.move_causes_check?(x,y)
+        end
+      end
+    end
+    false
   end
 end
