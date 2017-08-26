@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   get 'games/:id/status' => 'games#status'
   resources :games
+  resources :pieces, only: [:update]
 end

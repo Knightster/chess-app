@@ -1,11 +1,13 @@
 class PiecesController < ApplicationController
   def update
     @piece = Piece.find(params[:id]) # find the piece to update
+    x = piece_params[:x_position].to_i
+    y = piece_params[:y_position].to_i
     if @piece.valid_move?(x, y)
       @piece.update_attributes(piece_params) # update and save to database
-      redirect_to game_path(@game)
+      render json: { status: 'success' }
     else
-      render text: 'invalid move'
+      render json: { status: 'invalid move' }
     end
   end
 
