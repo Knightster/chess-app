@@ -52,4 +52,22 @@ class Pawn < Piece
   def first_move?
     (y_position == 1 && color == 'black') || (y_position == 6 && color == 'white')
   end
+
+  def en_passant?(x, y)
+    #check if pawn is in 5th rank
+    if player_id == white_player_id
+       opponent = black_player_id
+       return false if y > 3
+    else
+      opponent = white_player_id
+      return false if y < 4
+    
+    #target pawn must be in an adjacent column 
+    #and has just moved 2 steps as its first move
+    target_pawn = game.pieces.where(type: "Pawn", player: opponent, x_position: x, y_position: y).first
+    return false if target_pawn.first_move? != 2
+
+    #opponent captures target pawn and moves one step diagonal towards column of target pawn
+     target_pawn.update_attributes(position_x: nil, position_y: nil, captured: false)
+  end
 end
