@@ -61,4 +61,21 @@ class Piece < ApplicationRecord
     end
     update_attributes(x_position: x, y_position: y)
   end
+
+  def coordinates_on_board?(x, y)
+    return true if x >= 0 && x <= 7 && y >= 0 && y <= 7
+    false
+  end
+
+  def move_causes_check?(x, y)
+    state = false
+    ActiveRecord::Base.transaction do
+      move!(x, y)
+      king = game.pieces.where(type: 'King', color: color)
+      state = king.in_check?(king.color)
+      raise ActiveRecord::Rollback
+    end
+    reload
+    state
+  end
 end

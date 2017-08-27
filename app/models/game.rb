@@ -57,6 +57,25 @@ class Game < ApplicationRecord
     false
   end
 
+  def checkmate?(color)
+    # check to see if color is in check
+    return false unless in_check?(color)
+    # checks if a piece movement will cause king to be in check
+    !any_valid_moves?(color)
+  end
+
+  def any_valid_moves?(color)
+    pieces = Pieces.where(color: color, captured: false)
+    pieces.each do |piece|
+      (0..7).each do |x|
+        (0..7).each do |y|
+          return true if piece.valid_move?(x, y) && !piece.move_causes_check?(x, y)
+        end
+      end
+    end
+    false
+  end
+
   def player_color(player)
     return 'white' if player.id == white_player_id
     return 'black' if player.id == black_player_id
