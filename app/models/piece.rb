@@ -68,7 +68,7 @@ class Piece < ApplicationRecord
   def move_causes_check?(x, y)
     state = false
     ActiveRecord::Base.transaction do
-      move!(x,y)
+      move!(x, y)
       king = game.pieces.where(type: 'King', color: color)
       state = king.in_check?(king.color)
       raise ActiveRecord::Rollback

@@ -54,10 +54,10 @@ class Game < ApplicationRecord
   end
 
   def checkmate?(color)
-    king = Piece.where(color: color, type: 'King').first
     # check to see if color is in check
     return false unless in_check?(color)
-    return !any_valid_moves?(color)
+    # checks if a piece movement will cause king to be in check
+    !any_valid_moves?(color)
   end
 
   def any_valid_moves?(color)
@@ -65,7 +65,7 @@ class Game < ApplicationRecord
     pieces.each do |piece|
       (0..7).each do |x|
         (0..7).each do |y|
-          return true if piece.valid_move?(x,y) && !piece.move_causes_check?(x,y)
+          return true if piece.valid_move?(x, y) && !piece.move_causes_check?(x, y)
         end
       end
     end
