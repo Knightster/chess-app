@@ -1,16 +1,71 @@
+<br />
+<br />
+<div class="x">
+  <div class="card">
+    <h1 class="card-title">Status</h1>
+  <br />
+
+    <% if @game.in_check?("white") %>
+      <div class="check-white alert-warning text-center" role="alert">
+        <strong>White is now in check</strong>
+      </div>
+
+    <% elsif @game.in_check?("black") %>
+      <div class="check-black alert-warning text-center" role="alert">
+        <strong>Black is now in check</strong>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br />
+<br />
+
 <table>
-<!-- <table style="width: 100%"> -->
-  <% 8.times.each do |row| %>
+  <% 8.times.each do |y| %>
   <tr>
-    <% 8.times.each do |col| %>
-    <td>
-      <!-- <%= "#{row}.#{col}" %> -->
+    <% 8.times.each do |x| %>
+    <td class="droppable" data-y="<%= y %>" data-x="<%= x %>">
       <% @game.pieces.each do |piece| %>
-        <% if piece.x_position == col && piece.y_position == row %>
-          <p> <%= raw piece.image %> </p>
+        <% if piece.x_position == x && piece.y_position == y %>
+          <div class="draggable" data-id="<%= piece.id %>"> <%= raw piece.image %> </div>
         <% end %>
       <% end %>
     </td>
     <% end %>
   </tr>
 <% end %>
+</table>
+
+<script>
+$(document).ready(function () {
+  $('.draggable').draggable({
+    helper: 'clone',
+  });
+
+  $('.droppable').droppable({
+    drop: function(event, ui) {
+      var id = ui.draggable.data('id')
+      var x = $(this).data('x')
+      var y = $(this).data('y')
+      $.ajax({
+        type: 'PUT',
+        url: '/pieces/' + id,
+        dataType: 'json',
+        data: {
+          piece: {
+            x_position: x,
+            y_position: y
+          }
+        },
+        success: function(data) {
+          console.log('success', data);
+          location.reload();
+        },
+        error: function(data) {
+          console.log('error', arguments);
+        }
+      });
+    }
+  });
+});
+</script>

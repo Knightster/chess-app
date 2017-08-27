@@ -1,8 +1,15 @@
 class PiecesController < ApplicationController
   def update
     @piece = Piece.find(params[:id]) # find the piece to update
-    @piece.update_attributes(piece_params) # update and save to database
-    redirect_to game_path(@game)
+    x = piece_params[:x_position].to_i
+    y = piece_params[:y_position].to_i
+    if @piece.valid_move?(x, y)
+      @piece.update_attributes(piece_params) # update and save to database
+      render json: { status: 'success' }
+    else
+      render json: { status: 'invalid move' }
+    end
+    @piece.game.whose_turn(@piece.color) # switch players after turn
   end
 
   private

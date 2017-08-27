@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-  after_create :populate_game
+  # after_create :populate_game
   # belongs_to :white_player, class_name: "Player"
   # belongs_to :black_player, class_name: "Player"
   has_many :pieces
@@ -40,7 +40,11 @@ class Game < ApplicationRecord
   # rubocop:enable Metrics/AbcSize
 
   def square_occupied?(x, y)
-    pieces.where(x_position: x, y_position: y).exists?
+    !fetch_piece(x, y).nil?
+  end
+
+  def fetch_piece(x, y)
+    pieces.where(x_position: x, y_position: y).first
   end
 
   def in_check?(color)
@@ -70,5 +74,20 @@ class Game < ApplicationRecord
       end
     end
     false
+  end
+
+  def player_color(player)
+    return 'white' if player.id == white_player_id
+    return 'black' if player.id == black_player_id
+    false
+  end
+
+  # keep track of whose turn
+  def whose_turn(color)
+    if color == 'black'
+      update_attributes(turn: white_player_id)
+    else
+      update_attributes(turn: black_player_id)
+    end
   end
 end
