@@ -68,6 +68,6 @@ class Pawn < Piece
     return false if target_pawn.first_move? != 2
 
     #opponent captures target pawn and moves one step diagonal towards column of target pawn
-     target_pawn.update_attributes(position_x: nil, position_y: nil, captured: false)
+     target_pawn.update_attributes(position_x: nil, position_y: nil, captured: true)
   end
 end
