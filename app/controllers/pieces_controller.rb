@@ -9,6 +9,7 @@ class PiecesController < ApplicationController
     else
       render json: { status: 'invalid move' }
     end
+    @piece.game.whose_turn(@piece.color) # switch players after turn
   end
 
   private
